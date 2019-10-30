@@ -5,8 +5,8 @@ from rest_framework.parsers import JSONParser
 from rest_framework import status
 from rest_framework.decorators import api_view, permission_classes
 
-from customers.models import Customer
-from customers.serializers import CustomerSerializer
+from management.models import Customer
+from management.serializers import CustomerSerializer
 
 
 @api_view(['GET'])

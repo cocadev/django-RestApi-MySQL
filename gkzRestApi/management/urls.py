@@ -1,5 +1,4 @@
-from django.conf.urls import include, url
-from customers import views
+from management import views
 from django.urls import path
 
 urlpatterns = [ 
