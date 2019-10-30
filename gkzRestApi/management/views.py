@@ -5,10 +5,12 @@ from rest_framework.parsers import JSONParser
 from rest_framework import status
 from rest_framework.decorators import api_view, permission_classes
 
-from management.models import Customer
-from management.serializers import CustomerSerializer
+from management.models import Customer, Project
+from management.serializers import CustomerSerializer, ProjectSerializer
 
-
+#########################################
+############ Customer View ##############
+#########################################
 @api_view(['GET'])
 def get_customers(request):
     customers = Customer.objects.all()
@@ -17,7 +19,7 @@ def get_customers(request):
 
 
 @api_view(['POST'])
-def create_employee(request):
+def create_customer(request):
     customer_data = JSONParser().parse(request)
     customer_serializer = CustomerSerializer(data=customer_data)
     if customer_serializer.is_valid():
@@ -48,3 +50,23 @@ def customer_detail(request, pk):
     elif request.method == 'DELETE': 
         customer.delete() 
         return HttpResponse(status=status.HTTP_204_NO_CONTENT)
+
+
+########################################
+############ Project View ##############
+########################################
+@api_view(['GET'])
+def get_projects(request):
+    projects = Project.objects.all()
+    projects_serializer = ProjectSerializer(projects, many=True)
+    return JsonResponse(projects_serializer.data, safe=False)
+
+
+@api_view(['POST'])
+def create_project(request):
+    project_data = JSONParser().parse(request)
+    project_serializer = ProjectSerializer(data=project_data)
+    if project_serializer.is_valid():
+         project_serializer.save()
+         return JsonResponse(project_serializer.data, status=status.HTTP_201_CREATED)
+    return JsonResponse(project_serializer.errors, status=status.HTTP_400_BAD_REQUEST)
