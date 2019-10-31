@@ -1,14 +1,11 @@
 from management import views
 from django.urls import path
 
+
 urlpatterns = [ 
-    # url(r'^customers/$', views.customer_list),
-    # url(r'^customers/(?P<pk>[0-9]+)$', views.customer_detail),
-
-    path('customers/', views.get_customers, name="secure.customers"),
-    path('customer/create/', views.create_customer, name="secure.customer.create"),
-
-    path('projects/', views.get_customers, name="secure.projects"),
-    path('project/create/', views.create_project, name="secure.project.create"),
-
+    path('projects/', views.get_projects, name="secure.projects"),
+    path('projects/create/', views.create_project, name="secure.project.create"),
+    path('projects/<int:pk>/', views.profile_project, name="secure.project.profile"),
+    path('projects/<int:pk>/update/', views.update_project, name="secure.project.update"),
+    path('projects/<int:pk>/delete/', views.delete_project, name="secure.project.delete"),
 ]
