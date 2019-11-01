@@ -29,5 +29,5 @@ class ProjectChangeForm(forms.ModelForm):
     class Meta:
         model = Project
         fields = ('name', 'short_name', 'code', 'register_type', 'completion_date', 'project_type',
-                  'default_address_level', 'suburb', 'state', 'post_code', 'country', 'address1', 'address2',
+                  'default_address_level', 'suburb', 'project_state', 'post_code', 'country', 'address1', 'address2',
                   'address3', 'description')

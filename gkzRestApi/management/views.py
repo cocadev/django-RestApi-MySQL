@@ -51,15 +51,6 @@ def update_project(request, pk):
         return JsonResponse(form.data)
     return JsonResponse(form.errors, status=status.HTTP_400_BAD_REQUEST)
 
-
-    # request_data = JSONParser().parse(request)
-    # project_serializer = ProjectSerializer(project, data=request_data)
-    # if project_serializer.is_valid():
-    #     project_serializer.save()
-    #     return JsonResponse(project_serializer.data)
-    # return JsonResponse(project_serializer.errors, status=status.HTTP_400_BAD_REQUEST)
-
-
 @api_view(['DELETE'])
 def delete_project(request, pk):
     try:
