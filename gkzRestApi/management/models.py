@@ -10,3 +10,13 @@ class Country(models.Model):
 
     def __str__(self):
         return self.name
+
+
+class GithubUser(models.Model):
+    username = models.CharField(max_length=50, null=False, blank=False)
+    skills = models.CharField(max_length=255, null=False, blank=False)
+    counts = models.IntegerField(default=0, verbose_name='The number of Repositories')
+    country = models.ForeignKey('Country', related_name='githubusers', on_delete=models.CASCADE, default=None)
+
+    def __str__(self):
+        return "%s (%s)" % (self.username, self.skills)

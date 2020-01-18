@@ -1,5 +1,5 @@
 from rest_framework import status, viewsets
-from .models import Country
+from .models import Country, GithubUser
 from .serializers import CountrySerializer
 from django_filters.rest_framework import DjangoFilterBackend
 from rest_framework.filters import SearchFilter, OrderingFilter
@@ -19,3 +19,9 @@ class CountryViewSet(viewsets.ModelViewSet):
             if isinstance(data, list):
                 kwargs["many"] = True
         return super(CountryViewSet, self).get_serializer(*args, **kwargs)
+
+
+class GithubUserViewSet(viewsets.ModelViewSet):
+    queryset = GithubUser.objects.all()
+    serializer_class = CountrySerializer
+
