@@ -38,6 +38,7 @@ INSTALLED_APPS = [
     # Django REST framework 
     'rest_framework',
     'corsheaders',
+    'django_filters',
     # Customers application 
     'management',
 ]
@@ -79,7 +80,7 @@ WSGI_APPLICATION = 'gkzRestApi.wsgi.application'
 DATABASES = {
    'default': {
         'ENGINE': 'django.db.backends.mysql',
-        'NAME': 'djangodb',
+        'NAME': 'eugene_db',
         'USER': 'root',
         'PASSWORD': '',
         'HOST': '127.0.0.1',

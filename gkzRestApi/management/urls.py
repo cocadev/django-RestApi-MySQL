@@ -1,11 +1,11 @@
-from management import views
-from django.urls import path
+from django.urls import path, include
+from rest_framework.routers import DefaultRouter
+from .views import CountryViewSet
 
+router = DefaultRouter()
+router.register(r'countries', CountryViewSet)
 
-urlpatterns = [ 
-    path('projects/', views.get_projects, name="secure.projects"),
-    path('projects/create/', views.create_project, name="secure.project.create"),
-    path('projects/<int:pk>/', views.profile_project, name="secure.project.profile"),
-    path('projects/<int:pk>/update/', views.update_project, name="secure.project.update"),
-    path('projects/<int:pk>/delete/', views.delete_project, name="secure.project.delete"),
+urlpatterns = [
+    path('', include(router.urls)),
 ]
+
